@@ -14,5 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect('/products');
 });
+
+Route::get('/products', 'App\Http\Controllers\ProductsController@index');
+Route::get('/product/{id}', 'App\Http\Controllers\ProductsController@show');
+
+Route::post('/products', 'App\Http\Controllers\ProductsController@store');
+Route::post('/variants', 'App\Http\Controllers\VariantsController@store');
+Route::post('/operations', 'App\Http\Controllers\OperationsController@store');
+
+Route::delete('/product/{id}', 'App\Http\Controllers\ProductsController@destroy');
